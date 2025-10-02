@@ -22,4 +22,7 @@ bin/
 # vweb and database
 *.db
 *.js
+
+# etc
 *.log
+*.txt
