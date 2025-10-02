@@ -1,11 +1,14 @@
 module main
 
 import os
+import time
 import db.pg
 import entities
 import benchmark
 
 const conn_str = r'postgresql://'
+
+const year = time.now().year
 
 
 fn main() {
@@ -36,7 +39,7 @@ fn main() {
 
 	dbase = pg.connect_with_conninfo(conn_str)!
 
-	pdf_files := list_all_pdf('.${os.path_separator}pdf')
+	pdf_files := list_all_pdf('.${os.path_separator}pdf/${year}')
 	println('📊 Total de arquivos PDF encontrados: ${pdf_files.len}')
 	b.measure('Listagem de arquivos PDF')
 
