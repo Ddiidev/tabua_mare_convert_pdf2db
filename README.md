@@ -11,6 +11,7 @@ O **Convert PDF to DB** é uma ferramenta desenvolvida em [V Language](https://v
 Todos os dados oferecidos como API podem ser encontrados facilmente no formato PDF na página oficial da Marinha do Brasil: [https://www.marinha.mil.br/cppb/tabuas_de_mare](https://www.marinha.mil.br/cppb/tabuas_de_mare), especificamente aqui: [https://www.marinha.mil.br/chm/dados-do-segnav/dados-de-mare-mapa](https://www.marinha.mil.br/chm/dados-do-segnav/dados-de-mare-mapa)
 
 ### 🔗 Projetos Relacionados
+
 - **API Principal**: [Ddiidev/tabua_mare_api](https://github.com/Ddiidev/tabua_mare_api)
 - **Site Oficial**: [tabuamare.devtu.qzz.io](https://tabuamare.devtu.qzz.io/)
 
@@ -39,13 +40,13 @@ DataMare (Porto)
 
 ### 🗃️ Entidades do Banco de Dados
 
-| Tabela | Descrição | Campos Principais |
-|--------|-----------|-------------------|
-| `data_mare` | Informações do porto | nome, estado, fuso horário, carta náutica |
-| `geo_location` | Coordenadas geográficas | latitude, longitude (graus e decimal) |
-| `month_data` | Dados mensais | mês, nome do mês |
-| `day_data` | Dados diários | dia, nome do dia da semana |
-| `hour_data` | Dados horários | hora, nível da maré |
+| Tabela         | Descrição               | Campos Principais                         |
+| -------------- | ----------------------- | ----------------------------------------- |
+| `data_mare`    | Informações do porto    | nome, estado, fuso horário, carta náutica |
+| `geo_location` | Coordenadas geográficas | latitude, longitude (graus e decimal)     |
+| `month_data`   | Dados mensais           | mês, nome do mês                          |
+| `day_data`     | Dados diários           | dia, nome do dia da semana                |
+| `hour_data`    | Dados horários          | hora, nível da maré                       |
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -93,6 +94,7 @@ convert_pdf_to_db/
 ## 🔧 Pré-requisitos
 
 ### Dependências do Sistema
+
 - **V Language** - [Instruções de instalação](https://github.com/vlang/v#installing-v-from-source)
 - **PostgreSQL** - Banco de dados
 - **pdftotext** - baixe o executável pre-compilado www.xpdfreader.com
@@ -114,11 +116,13 @@ Certifique-se de que os arquivos PDF estejam organizados na pasta `pdf/` seguind
 ## 🚀 Como Executar
 
 ### Execução Simples
+
 ```bash
 v run .
 ```
 
 ### Execução com Compilação
+
 ```bash
 v . -o convert_pdf_to_db
 ./convert_pdf_to_db
@@ -136,6 +140,7 @@ O sistema executa as seguintes etapas para cada arquivo PDF:
 6. **📊 Benchmark** - Registra métricas de performance
 
 ### Exemplo de Saída
+
 ```
 🚀 Iniciando processamento de PDFs para banco de dados...
 📊 Total de arquivos PDF encontrados: 127
@@ -155,25 +160,25 @@ Processamento completo de PDFs para banco de dados: 2m 34s
 
 O projeto processa dados de marés de **todos os estados costeiros do Brasil**:
 
-| Estado | Sigla | Portos Incluídos |
-|--------|-------|------------------|
-| Alagoas | AL | Porto de Maceió |
-| Amapá | AP | Barra Norte, Igarapé Grande, Porto de Santana |
-| Bahia | BA | Madre de Deus, Aratu, Salvador, Ilhéus |
-| Ceará | CE | Terminal do Pecém, Porto de Mucuripe |
-| Espírito Santo | ES | Barra do Riacho, Tubarão, Vitória, Trindade, Ponta do Ubu |
-| Maranhão | MA | São Luís, Alumar, Ponta da Madeira, Itaqui, Tutóia |
-| Pará | PA | Ilha dos Guarás, Salinópolis, Mosqueiro, Belém, Vila do Conde, Breves |
-| Paraíba | PB | Porto de Cabedelo |
-| Pernambuco | PE | Fernando de Noronha, Recife, Suape |
-| Piauí | PI | Porto de Luís Correia |
-| Paraná | PR | Ponta do Felix, Paranaguá, Barra de Paranaguá |
-| Rio de Janeiro | RJ | Porto do Açu, Imbetiba, Rio de Janeiro, Itaguaí, Forno, Ilha Guaíba, Angra dos Reis |
-| Rio Grande do Norte | RN | Areia Branca, Macau, Guamaré, Natal |
-| Rio Grande do Sul | RS | Porto do Rio Grande |
-| Santa Catarina | SC | São Francisco do Sul, Itajaí, Florianópolis, Imbituba |
-| Sergipe | SE | Terminal Inácio Barbosa, Capitania dos Portos |
-| São Paulo | SP | São Sebastião, Santos |
+| Estado              | Sigla | Portos Incluídos                                                                    |
+| ------------------- | ----- | ----------------------------------------------------------------------------------- |
+| Alagoas             | AL    | Porto de Maceió                                                                     |
+| Amapá               | AP    | Barra Norte, Igarapé Grande, Porto de Santana                                       |
+| Bahia               | BA    | Madre de Deus, Aratu, Salvador, Ilhéus                                              |
+| Ceará               | CE    | Terminal do Pecém, Porto de Mucuripe                                                |
+| Espírito Santo      | ES    | Barra do Riacho, Tubarão, Vitória, Trindade, Ponta do Ubu                           |
+| Maranhão            | MA    | São Luís, Alumar, Ponta da Madeira, Itaqui, Tutóia                                  |
+| Pará                | PA    | Ilha dos Guarás, Salinópolis, Mosqueiro, Belém, Vila do Conde, Breves               |
+| Paraíba             | PB    | Porto de Cabedelo                                                                   |
+| Pernambuco          | PE    | Fernando de Noronha, Recife, Suape                                                  |
+| Piauí               | PI    | Porto de Luís Correia                                                               |
+| Paraná              | PR    | Ponta do Felix, Paranaguá, Barra de Paranaguá                                       |
+| Rio de Janeiro      | RJ    | Porto do Açu, Imbetiba, Rio de Janeiro, Itaguaí, Forno, Ilha Guaíba, Angra dos Reis |
+| Rio Grande do Norte | RN    | Areia Branca, Macau, Guamaré, Natal                                                 |
+| Rio Grande do Sul   | RS    | Porto do Rio Grande                                                                 |
+| Santa Catarina      | SC    | São Francisco do Sul, Itajaí, Florianópolis, Imbituba                               |
+| Sergipe             | SE    | Terminal Inácio Barbosa, Capitania dos Portos                                       |
+| São Paulo           | SP    | São Sebastião, Santos                                                               |
 
 ## 📝 Logs e Monitoramento
 
@@ -203,6 +208,7 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 ## 📞 Suporte
 
 Para dúvidas, sugestões ou problemas:
+
 - Abra uma [issue](https://github.com/Ddiidev/convert_pdf_to_db/issues) no GitHub
 - Consulte a documentação da API principal
 

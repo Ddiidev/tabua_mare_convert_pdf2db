@@ -178,7 +178,7 @@ pub fn normalize_pdf_to_text(file_pdf_converted_for_txt string) !models.DataMare
 		}
 		// Processamento de informações institucionais e dados da carta náutica
 		else if ['Nível Médio', 'Carta'].all(line_apply_trim.contains(it)) {
-			data_mare.mean_level = line_apply_trim.all_after('Nível Médio ').all_before(' m')
+			data_mare.mean_level = line_apply_trim.all_after('Nível Médio ').all_before(' m').f32()
 			data_mare.card = line_apply_trim.all_after('Carta ').trim_space()
 			data_mare.geo_location = geo_location
 			data_mare.data_collection_institution = line_apply_trim.before(' ')
