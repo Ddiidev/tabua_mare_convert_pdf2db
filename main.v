@@ -2,20 +2,23 @@ module main
 
 import os
 import time
-import db.pg
+$if using_sqlite ? {
+	import db.sqlite as db_provider
+} $else {
+	import db.pg as db_provider
+}
 import entities
 import benchmark
 
-const conn_str = r'postgresql://'
+const pg_conn_str = r'postgresql://'
+const sqlite_conn_str = r'taubinha.sqlite'
 
 const year = time.now().year
-
 
 fn main() {
 	// Inicializar benchmark
 	mut b := benchmark.new_benchmark()
-	mut log := os.open_file('./current_state.log', 'a') or {
-		panic(err) }
+	mut log := os.open_file('./current_state.log', 'a') or { panic(err) }
 	defer {
 		log.close()
 	}
@@ -23,7 +26,10 @@ fn main() {
 	println('🚀 Iniciando processamento de PDFs para banco de dados...')
 	b.measure('Inicialização do sistema')
 
-	mut dbase := pg.connect_with_conninfo(conn_str)!
+	mut pool_conn := new()!
+	mut conn := pool_conn.get()!
+	mut dbase := conn as db_provider.DB
+
 	b.measure('Conexão com banco de dados')
 
 	sql dbase {
@@ -36,8 +42,9 @@ fn main() {
 	b.measure('Criação de tabelas no banco')
 
 	dbase.close()!
-
-	dbase = pg.connect_with_conninfo(conn_str)!
+	pool_conn.put(conn)!
+	conn = pool_conn.get()!
+	dbase = conn as db_provider.DB
 
 	pdf_files := list_all_pdf('.${os.path_separator}pdf/${year}')
 	println('📊 Total de arquivos PDF encontrados: ${pdf_files.len}')
@@ -71,6 +78,7 @@ fn main() {
 	}
 
 	dbase.close()!
+	pool_conn.put(conn)!
 	b.measure('Fechamento da conexão com banco')
 
 	println('\n📊 Relatório final de benchmark:')

@@ -6,6 +6,8 @@ Este projeto é responsável por processar e converter dados de marés de arquiv
 
 O **Convert PDF to DB** é uma ferramenta desenvolvida em [V Language](https://vlang.io/) que automatiza o processo de extração, normalização e armazenamento de dados de marés do litoral brasileiro. Os dados são extraídos de documentos PDF oficiais e estruturados em um banco de dados PostgreSQL para consumo pela API pública.
 
+📦 Além disso, este repositório disponibiliza um banco de dados SQLite atualizado para o ano corrente, contendo os mesmos dados que estão em produção no PostgreSQL, pronto para uso em projetos e objetivos próprios.
+
 ### 📄 Fonte Oficial dos Dados
 
 Todos os dados oferecidos como API podem ser encontrados facilmente no formato PDF na página oficial da Marinha do Brasil: [https://www.marinha.mil.br/cppb/tabuas_de_mare](https://www.marinha.mil.br/cppb/tabuas_de_mare), especificamente aqui: [https://www.marinha.mil.br/chm/dados-do-segnav/dados-de-mare-mapa](https://www.marinha.mil.br/chm/dados-do-segnav/dados-de-mare-mapa)

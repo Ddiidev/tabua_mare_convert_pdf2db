@@ -5,8 +5,6 @@ import time
 import types
 import models
 
-const year = time.now().year
-
 fn is_month_name(name string) bool {
 	months := ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto',
 		'Setembro', 'Outubro', 'Novembro', 'Dezembro']
